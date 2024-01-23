@@ -5,7 +5,7 @@ import gosumbanner from "./img/gosumbanner.png"
 import Greece from "./img/Greece.jpg"
 import Cookies from "js-cookie";
 
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 function MainPages() {
   // 나중에 받을 카드 데이터
@@ -97,7 +97,6 @@ function MainPages() {
           <CategoryLink href="/">전체</CategoryLink>
           <CategoryLink href="/">전체</CategoryLink>
           <CategoryLink href="/">전체</CategoryLink>
-          
         </MainCategoryInner>
       </MainCategory>
 

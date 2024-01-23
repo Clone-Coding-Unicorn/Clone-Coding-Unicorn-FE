@@ -24,7 +24,6 @@ function Router() {
                     <Route element={<Layout />}>
                         <Route path="/" element={<MainPages />} />
                         <Route path="/:id" element={<DetailPages />} />
-                        
                     </Route>
                     <Route path="/search" element={<Search />} />
                 </Routes>
