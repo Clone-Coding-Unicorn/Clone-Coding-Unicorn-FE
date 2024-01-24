@@ -5,6 +5,7 @@ export const PostHead = styled.div`
     padding: 4rem 5% 5.5rem;
     border-bottom: 1px solid #051619;
     text-align: center;
+
 `
 
 export const PostBody = styled.div`
@@ -77,3 +78,4 @@ export const PostHeadProgress = styled.div`
   transition: width 0.2s ease-in-out; 
   z-index: -1;
 `;
+

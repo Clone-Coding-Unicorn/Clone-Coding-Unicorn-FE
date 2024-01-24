@@ -81,6 +81,7 @@ function MainPages() {
       {loading ? (
         <CustomLoading />
       ) : (
+
         <HomeRecent>
           {/* 카드부분 */}
           <div className="card-group" >
