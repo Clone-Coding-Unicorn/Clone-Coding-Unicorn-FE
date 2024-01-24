@@ -71,15 +71,22 @@ function Login() {
 
     const handleKakaoLogin = () => {
         // Redirect the user to the Kakao OAuth URL
-        window.location.href = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=671600df764bdd2a2198446875a85121&redirect_uri=https://lyriczen.store/api/kakao/callback&response_type=code";
+        window.location.href =
+            'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=671600df764bdd2a2198446875a85121&redirect_uri=https://lyriczen.store/api/kakao/callback&response_type=code';
+        // Cookies.set('token', response.data.token);
+        // // 쿠키 저장하는 코드!
+        if(Cookies.get('token')){
+            navigate('/');
+        }
     };
 
-    // useEffect(() => {
-    //     const token = Cookies.get('token');
-    //     if (token) {
-    //         Navigate('/');
-    //     }
-    // }, []);
+    useEffect(() => {
+        const token = Cookies.get('token');
+        if (token) {
+            navigate('/');
+        } else 
+        console.log('+++');
+    }, []);
 
     // JSX로 화면 구성
     return (

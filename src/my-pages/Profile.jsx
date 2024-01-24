@@ -21,7 +21,6 @@ function Profile() {
         deleteMember: true || false, // 회원 삭제 여부
         subscribeAgree: true || false, // 구독 동의 여부
     });
-
     // 서버에서 사용자 정보를 가져오는 함수
     const getProfile = async () => {
         try {
@@ -56,7 +55,7 @@ function Profile() {
     };
     // 컴포넌트가 마운트될 때 한 번만 실행되는 useEffect
     useEffect(() => {
-        // const token = Cookies.get('token');
+        Cookies.get('token');
         // 서버에서 사용자 정보를 가져오는 함수 호출
         getProfile();
     }, []);
@@ -196,7 +195,7 @@ export default Profile;
 /* ... (백그라운드 및 기본 스타일) */
 export const StBody = styled.div`
     display: block; // div 요소의 display를 block으로 설정
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
     width: 100%;

@@ -5,7 +5,6 @@ export const api = axios.create({
     baseURL: process.env.REACT_APP_SERVER_URL,
     // withCredentials: true,
     // withCredentials를 추가하여 CORS 문제를 해결
-
 });
 
 api.interceptors.request.use((api) => {
@@ -18,6 +17,7 @@ api.interceptors.request.use((api) => {
     // } else {
     // api.headers.Authorization = `Bearer ${access_token}`;
     api.headers.Authorization = `${access_token}`;
+    // api.headers['Authorization'] = `${access_token}`;
     // }
     return api;
 });

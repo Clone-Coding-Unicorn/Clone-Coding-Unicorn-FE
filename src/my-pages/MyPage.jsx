@@ -12,23 +12,18 @@ function MyPage() {
         email: 'web.creastory@gmail.com', // 이메일 초기값
         emoji: '🦔', // 이모지 초기값
     });
-
     // 서버에서 사용자 정보를 가져오는 함수
     const getMypage = async () => {
         try {
             // 서버에 사용자 프로필 정보 요청
             const response = await api.get(`/api/mypage`);
-            console.log(response)
-
+            console.log('response : ', response)
             // 서버에서 받아온 사용자 정보로 state 업데이트
             setMypageData({
+                ...mypageData,
                 name: response.data.name, // 서버에서 받은 이름으로 업데이트
                 email: response.data.email, // 서버에서 받은 이메일로 업데이트
-                emoji: response.data.emoji, // 서버에서 받은 이모지로 업데이트
             });
-            // 로그인 성공 시 서버에서 반환한 토큰을 쿠키에 저장
-            // Cookies.set('token', response.headers.authorization);
-
         } catch (error) {
             // 오류 처리 부분 (주석 처리된 부분은 필요에 따라 사용 가능)
             // 오류가 발생한 경우, 에러 메시지를 콘솔에 출력하거나 특정 오류에 대한 처리 진행
@@ -41,10 +36,10 @@ function MyPage() {
             // }
         }
     };
-
+    
     // 컴포넌트가 마운트될 때 한 번만 실행되는 useEffect
     useEffect(() => {
-        // const token = Cookies.get('token');
+        Cookies.get('token');
         // 서버에서 사용자 정보를 가져오는 함수 호출
         getMypage();
     }, []);
@@ -94,6 +89,7 @@ function MyPage() {
                         0
                     </MypageH3>
                 </InputDiv>
+                <button onClick={() => getMypage()}>확인</button>
             </MypageDiv>
         </StBody>
     );
@@ -110,7 +106,7 @@ export const StBody = styled.div`
     background-color: #eae7de;
     font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
 
-    display: block; // div 요소의 display를 block으로 설정
+    /* display: block; // div 요소의 display를 block으로 설정 */
     position: fixed;
     top: 0;
     left: 0;
