@@ -86,6 +86,7 @@ function MainPages() {
         <div className="card-group" >
           {recentItems&&recentItems.map((recentItems)=>(
           <a className="card" href={`/${recentItems.id}`} key={recentItems.id}>
+
             <img src={recentItems.imageUrl} className="card-img-top" alt="..." />
             <div className="card-body">
               <h5 className="card-title">{recentItems.title}</h5>

@@ -26,7 +26,6 @@ function CustomNavbar() {
     setIsClicked(!isClicked);
     document.documentElement.classList.toggle('invert', !isClicked);
   };
-
   // 버튼 클릭 유무
   const handleLoginIconClick = () => {
     setShowDropdown(!showDropdown);

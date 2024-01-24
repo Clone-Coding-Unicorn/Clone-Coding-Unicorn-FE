@@ -5,6 +5,7 @@ export const PostHead = styled.div`
     padding: 4rem 5% 5.5rem;
     border-bottom: 1px solid #051619;
     text-align: center;
+
 `
 export const PostBody = styled.div`
     margin: 0 0 4rem;
@@ -41,4 +42,5 @@ export const PostSubmit = styled.button`
     border-left: 0;
     background-color: #ff6b00;
     border-radius: 0 8px 8px 0;
+
 `

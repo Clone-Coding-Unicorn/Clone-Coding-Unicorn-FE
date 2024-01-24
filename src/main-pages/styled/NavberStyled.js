@@ -67,6 +67,7 @@ export const NavbarUi = styled.div`
     margin-left: auto;
     margin-right: 3.2rem;
 
+
 `
 
 export const DropdownBox = styled.div`

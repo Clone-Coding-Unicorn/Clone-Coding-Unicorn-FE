@@ -3,10 +3,13 @@ import { useParams } from 'react-router-dom';
 import { PostBody, PostHead, PostSubmit, PostSubscribe, PostSubscribeGroup, PostTextfield } from './styled/DetailPages';
 import { api } from '../axios/api';
 import CustomLoading from './Loading';
+import { PostHead } from './styled/DetailPages';
+
 function DetailPages() {
     const { id } = useParams();
     const [posts, setPosts] = useState(null);
     const [loading, setLoading] = useState(true);
+
     // 스크롤 이벤트를 하기위한 스크롤 수치
     const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -33,7 +36,7 @@ function DetailPages() {
         // return () => {
         //   window.removeEventListener('scroll', handleScroll); 		// 스크롤 이벤트 제거
         // };
-    }, []);
+
     if (loading) {
         return <CustomLoading />
     }
@@ -58,6 +61,8 @@ function DetailPages() {
                     </PostSubmit>
                 </PostSubscribeGroup>
             </PostSubscribe>
+
+
         </div>
     )
 }
