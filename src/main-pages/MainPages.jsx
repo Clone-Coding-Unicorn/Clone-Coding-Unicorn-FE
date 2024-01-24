@@ -2,57 +2,31 @@ import React, { useEffect, useState } from 'react';
 import { HomeBannerImage, HomeBannerText, HomeRecent, MainCategory, BoxImg, IntroInner, IntroHeadTitle, SubscribeGosum, MainBodyStyled, MainCategoryInner, CategoryLink, HomeBanner, MainFooter, MainFooterLogo, MainBodyColor, RollingBannerContainer, RollingBanner, IntroHead, RollingText, MarqueeText, MarqueeContainer, MargueeFooter, HoverContainer, HoverText, MainFooterAddress, FooterAddressRight, MainFooterSitemap, FooterSitemapItem, FooterAddressIfro, SitemapItemLink, BoxImgButton } from './styled/MainPagesStyled'
 import gosum from "./img/gosum.png"
 import gosumbanner from "./img/gosumbanner.png"
-import Greece from "./img/Greece.jpg"
-import Cookies from "js-cookie";
-
+import { api } from '../axios/api';
+import CustomLoading from './Loading';
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 function MainPages() {
   // 나중에 받을 카드 데이터
-  const [recentItems, setRecentItems] = useState([
-    {
-      id: 1,
-      title: "2024 다보스포럼 총정리",
-      date: "2024/01/22",
-      category: "경제",
-      imageUrl: Greece,
-    },
-    {
-      id: 2,
-      title: "2024 다보스포럼 총정리",
-      date: "2024/01/22",
-      category: "경제",
-      imageUrl: Greece,
-    },
-    {
-      id: 3,
-      title: "2024 다보스포럼 총정리",
-      date: "2024/01/22",
-      category: "경제",
-      imageUrl: Greece,
-    },
-    {
-      id: 4,
-      title: "2024 다보스포럼 총정리",
-      date: "2024/01/22",
-      category: "경제",
-      imageUrl: Greece,
-    },
-  ]);
+  const [recentItems, setRecentItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(()=>{
 
-  // useEffect(()=>{
-
-  //   const fetchData = async () => {
-  //     try {
-  //         const response = await api.get(`/detail/${quizId}`);
-  //         setRecentItems(response.data);
+    const fetchData = async () => {
+      try {
+          const response = await api.get(`/api/posts`);
+          console.log(response);
+          setRecentItems(response.data[1]);
           
-  //     } catch (error) {
-  //         console.error("에러 발생:", error);
-  //     }
-  // };
-  // fetchData();
-  // },[])
+      } catch (error) {
+          console.error("에러 발생:", error);
+      }finally {
+        // 로딩 상태 변경
+        setLoading(false);
+      }
+  };
+  fetchData();
+  },[])
 
   return (
 
@@ -99,12 +73,14 @@ function MainPages() {
           <CategoryLink href="/">전체</CategoryLink>
         </MainCategoryInner>
       </MainCategory>
-
+      {loading ? (
+        <CustomLoading />
+      ) : (
       <HomeRecent>
         {/* 카드부분 */}
         <div className="card-group" >
           {recentItems&&recentItems.map((recentItems)=>(
-          <a className="card" href={`/${recentItems.id}`}>
+          <a className="card" href={`/${recentItems.id}`} key={recentItems.id}>
             <img src={recentItems.imageUrl} className="card-img-top" alt="..." />
             <div className="card-body">
               <h5 className="card-title">{recentItems.title}</h5>
@@ -115,6 +91,7 @@ function MainPages() {
           ))}
         </div>
       </HomeRecent>
+      )}
       <HomeBanner href="/">
         <HomeBannerImage>
           <img src={gosumbanner} alt="고슴" />

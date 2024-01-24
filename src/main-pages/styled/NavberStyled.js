@@ -66,10 +66,7 @@ export const IconContainer = styled.div`
 export const NavbarUi = styled.div`
     margin-left: auto;
     margin-right: 3.2rem;
-    &.invert {
-    -webkit-filter: invert(100%);
-    filter: invert(100%);
-  } 
+
 `
 
 export const DropdownBox = styled.div`
