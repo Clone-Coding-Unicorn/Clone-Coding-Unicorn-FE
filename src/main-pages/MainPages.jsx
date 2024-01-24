@@ -4,12 +4,12 @@ import gosum from "./img/gosum.png"
 import gosumbanner from "./img/gosumbanner.png"
 import { api } from '../axios/api';
 import CustomLoading from './Loading';
-// import "bootstrap/dist/css/bootstrap.min.css";
 
 function MainPages() {
   // 나중에 받을 카드 데이터
   const [recentItems, setRecentItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
   useEffect(()=>{
 
     const fetchData = async () => {
@@ -26,8 +26,10 @@ function MainPages() {
       }
   };
   fetchData();
-  },[])
-
+  },[page])
+  const handleLoadMore = () => {
+    setPage(prevPage => prevPage + 1);  // 페이지 번호를 증가시킵니다.
+  };
   return (
 
     <MainBodyStyled>
@@ -66,13 +68,16 @@ function MainPages() {
       <MainCategory>
         {/* 카테고리 부분 */}
         <MainCategoryInner>
-          <CategoryLink href="/">전체</CategoryLink>
-          <CategoryLink href="/">전체</CategoryLink>
-          <CategoryLink href="/">전체</CategoryLink>
-          <CategoryLink href="/">전체</CategoryLink>
-          <CategoryLink href="/">전체</CategoryLink>
+        {['전체', '증권', '부동산', '경제 · 금융', '산업', '정치', '사회', '국제', '오피니언', '문화 · 스포츠', '서경'].map(category => {
+                  if(category==='전체')
+                  return <CategoryLink key={category} href="/">전체</CategoryLink>
+                  return (
+                      <CategoryLink key={category} href={`/posts/${category}`}>{category}</CategoryLink>
+                  );
+                })}
         </MainCategoryInner>
       </MainCategory>
+      {/* 로딩시 */}
       {loading ? (
         <CustomLoading />
       ) : (
@@ -90,8 +95,11 @@ function MainPages() {
           </a>
           ))}
         </div>
+        {/* <button onClick={handleLoadMore}>더보기</button> */}
       </HomeRecent>
+      
       )}
+      {/* 하단 빛나는 고슴이 */}
       <HomeBanner href="/">
         <HomeBannerImage>
           <img src={gosumbanner} alt="고슴" />

@@ -9,6 +9,7 @@ import Login from '../my-pages/Login';
 import SignUp from '../my-pages/SignUp';
 import Profile from '../my-pages/Profile';
 import MyPage from '../my-pages/MyPage';
+import Categorypages from "../main-pages/Categorypages";
 
 
 function Router() {
@@ -24,6 +25,7 @@ function Router() {
                         <Route path="mypage" element={<MyPage />} />
                         <Route path="/" element={<MainPages />} />
                         <Route path="/:id" element={<DetailPages />} />
+                        <Route path="/posts/:category" element={<Categorypages />} />
                     </Route>
                     <Route path="/search" element={<Search />} />
                 </Routes>

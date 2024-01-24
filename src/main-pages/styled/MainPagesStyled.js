@@ -2,7 +2,6 @@ import styled, { createGlobalStyle } from 'styled-components';
 import gosumbanner2 from "../img/gosumbanner2.png"
 
 export const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 &.invert {
     -webkit-filter: invert(100%);
     filter: invert(100%);
@@ -108,7 +107,7 @@ export const CategoryLink = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0px 3rem;
+    margin: 0px 2rem;
     padding: 1.25rem 0px;
     box-sizing: border-box;
     font-size: 1.125rem;
@@ -158,15 +157,15 @@ export const HomeRecent = styled.section`
                 filter: grayscale(0%);
             }
         }
-    @media screen and (max-width: 1023px) {
+    @media screen and (max-width: 1200px) {
         width: 33.33%; 
     }
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
         width: 50%; 
     }
 
-    @media screen and (max-width: 479px) {
+    @media screen and (max-width: 600px) {
         width: 100%; 
     }
 }

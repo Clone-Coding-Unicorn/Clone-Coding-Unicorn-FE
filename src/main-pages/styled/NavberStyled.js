@@ -36,7 +36,7 @@ export const HeaderNavbarImg = styled.a`
     }
 `;
 
-export const HeaderNavbarIcon = styled.a`
+export const HeaderNavbarIcon = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;

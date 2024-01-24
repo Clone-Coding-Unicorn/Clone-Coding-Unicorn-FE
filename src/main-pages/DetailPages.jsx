@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { BeatLoader } from 'react-spinners';
 import { useParams } from 'react-router-dom';
-import { PostHead, Postbody } from './styled/DetailPages';
+import { PostBody, PostHead, PostSubmit, PostSubscribe, PostSubscribeGroup, PostTextfield } from './styled/DetailPages';
 import { api } from '../axios/api';
 import CustomLoading from './Loading';
 function DetailPages() {
     const { id } = useParams();
     const [posts, setPosts] = useState(null);
     const [loading, setLoading] = useState(true);
+    // 스크롤 이벤트를 하기위한 스크롤 수치
+    const [scrollPosition, setScrollPosition] = useState(0);
 
     useEffect(() => {
 
@@ -28,6 +29,10 @@ function DetailPages() {
             }
         };
         fetchData();
+        // window.addEventListener('scroll', handleScroll, { capture: true }); // 스크롤 이벤트 등록
+        // return () => {
+        //   window.removeEventListener('scroll', handleScroll); 		// 스크롤 이벤트 제거
+        // };
     }, []);
     if (loading) {
         return <CustomLoading />
@@ -39,11 +44,20 @@ function DetailPages() {
                 <h1>{posts.title}</h1>
                 <p>{posts.date}</p>
             </PostHead>
-            <Postbody>
+            <PostBody>
                 <img src={posts.imageUrl} alt="..." />
                 <div dangerouslySetInnerHTML={{ __html: posts.contents }} />
-            </Postbody>
-
+            </PostBody>
+            <PostSubscribe>
+                <PostSubscribeGroup>
+                    <PostTextfield placeholder="이메일 주소">
+                        
+                    </PostTextfield>
+                    <PostSubmit>
+                        뉴스레터 구독하기
+                    </PostSubmit>
+                </PostSubscribeGroup>
+            </PostSubscribe>
         </div>
     )
 }
