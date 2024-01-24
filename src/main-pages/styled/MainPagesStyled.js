@@ -2,8 +2,10 @@ import styled, { createGlobalStyle } from 'styled-components';
 import gosumbanner2 from "../img/gosumbanner2.png"
 
 export const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
-
+&.invert {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+  } 
 body {
   font-family: 'Noto Sans KR', sans-serif;
 }
@@ -104,7 +106,7 @@ export const CategoryLink = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0px 3rem;
+    margin: 0px 2rem;
     padding: 1.25rem 0px;
     box-sizing: border-box;
     font-size: 1.125rem;
@@ -114,6 +116,7 @@ export const CategoryLink = styled.a`
 `
 // 카드 부분들
 export const HomeRecent = styled.section`
+<<<<<<< HEAD
     width: 100%;
     max-width: 1960px;
     margin: 0 auto;
@@ -138,6 +141,39 @@ export const HomeRecent = styled.section`
         background: #eae7de;
         transition: background-color 0.3s ease;
         img {
+=======
+    width: 90%;
+    max-width: 1360px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px 5%;
+    position: relative;
+.card-group {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    border-color: #051619;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+}
+
+.card {
+    box-sizing: border-box;
+    display: block;
+    color: #051619;
+    border: 1px solid #051619;
+    border-width: 0 1px 1px 0;
+    cursor: pointer;
+    text-decoration-line: none;
+    background: #eae7de;
+    transition: background-color 0.3s ease;
+    width: 25%;
+        img {
+            width: 100%;
+            max-height: 200px;
+            height: 100%; 
+            object-fit: cover;
+>>>>>>> 11d1de95bb02784f5e968f1b34a9e19cfdcece94
             filter: grayscale(100%);
             transition: filter 0.3s ease;
         }
@@ -147,7 +183,40 @@ export const HomeRecent = styled.section`
                 filter: grayscale(0%);
             }
         }
+<<<<<<< HEAD
     }
+=======
+    @media screen and (max-width: 1200px) {
+        width: 33.33%; 
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 50%; 
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 100%; 
+    }
+}
+
+
+.card-body {
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #666;
+}
+
+
+ 
+>>>>>>> 11d1de95bb02784f5e968f1b34a9e19cfdcece94
 `
 
 // 하단 카드 배너
