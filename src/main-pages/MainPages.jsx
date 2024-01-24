@@ -15,28 +15,28 @@ function MainPages() {
       title: "2024 다보스포럼 총정리",
       date: "2024/01/22",
       category: "경제",
-      image: Greece,
+      imageUrl: Greece,
     },
     {
       id: 2,
       title: "2024 다보스포럼 총정리",
       date: "2024/01/22",
       category: "경제",
-      image: Greece,
+      imageUrl: Greece,
     },
     {
       id: 3,
       title: "2024 다보스포럼 총정리",
       date: "2024/01/22",
       category: "경제",
-      image: Greece,
+      imageUrl: Greece,
     },
     {
       id: 4,
       title: "2024 다보스포럼 총정리",
       date: "2024/01/22",
       category: "경제",
-      image: Greece,
+      imageUrl: Greece,
     },
   ]);
 
@@ -105,7 +105,7 @@ function MainPages() {
         <div className="card-group" >
           {recentItems&&recentItems.map((recentItems)=>(
           <a className="card" href={`/${recentItems.id}`}>
-            <img src={recentItems.image} className="card-img-top" alt="..." />
+            <img src={recentItems.imageUrl} className="card-img-top" alt="..." />
             <div className="card-body">
               <h5 className="card-title">{recentItems.title}</h5>
               <p className="card-text">{recentItems.date}</p>

@@ -62,3 +62,32 @@ export const IconContainer = styled.div`
             visibility: hidden;
     }
     `;
+
+export const NavbarUi = styled.div`
+    margin-left: auto;
+    margin-right: 3.2rem;
+    &.invert {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+  } 
+`
+
+export const DropdownBox = styled.div`
+position: absolute;
+top: 100%;
+background-color: #fff;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+padding: 16px; /* Increased padding for a larger box */
+  width: 200px;
+a {
+    display: block;
+    padding: 8px 16px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #f2f2f2;
+    }
+  }
+`;

@@ -6,6 +6,7 @@ export const GlobalStyles = createGlobalStyle`
 
 body {
   font-family: 'Noto Sans KR', sans-serif;
+  background: #eae7de;
 }
 `
 
@@ -115,12 +116,41 @@ export const CategoryLink = styled.a`
 // 카드 부분들
 export const HomeRecent = styled.section`
     width: 100%;
-    max-width: 1960px;
-    margin: 0 auto;
+    max-width: 1700px;
     padding: 0 5%;
-    position: relative;
-    flex-wrap: wrap;
     
+.card-group {
+  display: flex;
+}
+
+.card {
+  width: 100%;
+  color: #000;
+  border: 1px solid #000;
+  transition: transform 0.3s;
+}
+
+.card img {
+  width: 100%;
+  max-height: 300px;
+  border: 1px solid #000;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #666;
+}
+
+
     @media screen and (max-width: 1023px) {
         .card-group {
             display: grid;
