@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { PostBody, PostContainer, PostHead, PostHeadProgress, PostScrollWrap, PostSubmit, PostSubscribe, PostSubscribeGroup, PostTextfield } from './styled/DetailPages';
 import { api } from '../axios/api';
 import CustomLoading from './Loading';
-import { PostHead } from './styled/DetailPages';
 
 function DetailPages() {
     const { id } = useParams();
