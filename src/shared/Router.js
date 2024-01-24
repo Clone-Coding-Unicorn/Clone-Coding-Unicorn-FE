@@ -14,14 +14,14 @@ import MyPage from '../my-pages/MyPage';
 function Router() {
     return (
         <div>
-            <GlobalStyles/>
+            <GlobalStyles />
             <BrowserRouter>
                 <Routes>
                     <Route path="login" element={<Login />} />
                     <Route path="signup" element={<SignUp />} />
+                        <Route path="profile" element={<Profile />} />
+                        <Route path="mypage" element={<MyPage />} />
                     <Route element={<Layout />}>
-                    <Route path="profile" element={<Profile />} />
-                    <Route path="mypage" element={<MyPage />} />
                         <Route path="/" element={<MainPages />} />
                         <Route path="/:id" element={<DetailPages />} />
                     </Route>

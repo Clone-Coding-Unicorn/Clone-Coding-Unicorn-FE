@@ -26,8 +26,9 @@ function Profile() {
     const getProfile = async () => {
         try {
             // 서버로부터 사용자 프로필 정보 요청
-            const response = await api.get(`/api/user/profile`);
+            const response = await api.get(`/api/profile`);
             // 서버에서 받아온 사용자 정보로 state 업데이트
+            console.log(response)
             setProfileData({
                 email: response.data.email,         // 이메일 업데이트
                 password: response.data.password,   // 비밀번호 업데이트
@@ -35,9 +36,8 @@ function Profile() {
                 emoji: response.data.emoji,         // 이모지 업데이트
             });
             // 프로필 수정이 완료되면 알림창 표시 및 홈페이지로 이동
-            if (response.status === 200) {
+            if (response.status === 201) {
                 alert('프로필 수정이 완료되었습니다.');
-                navigate('/');
             }
         } catch (error) {
             // 오류 처리 부분 (주석 처리된 부분은 필요에 따라 사용 가능)
@@ -346,6 +346,7 @@ export const EmojiImg = styled.div`
 `;
 /* ... (로그아웃 영역 스타일) */
 export const LogOuter = styled.div`
+    margin-top: 30px;
     flex-direction: row;
     align-items: center;
     height: 30px;
@@ -353,7 +354,7 @@ export const LogOuter = styled.div`
 /* ... (링크 스타일) */
 export const StLink = styled(Link)`
     margin-right: 15px;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 600;
     color: black;
     &:hover {

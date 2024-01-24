@@ -17,7 +17,8 @@ function MyPage() {
     const getMypage = async () => {
         try {
             // 서버에 사용자 프로필 정보 요청
-            const response = await api.get(`/api/user/profile`);
+            const response = await api.get(`/api/mypage`);
+            console.log(response)
 
             // 서버에서 받아온 사용자 정보로 state 업데이트
             setMypageData({
@@ -25,6 +26,9 @@ function MyPage() {
                 email: response.data.email, // 서버에서 받은 이메일로 업데이트
                 emoji: response.data.emoji, // 서버에서 받은 이모지로 업데이트
             });
+            // 로그인 성공 시 서버에서 반환한 토큰을 쿠키에 저장
+            // Cookies.set('token', response.headers.authorization);
+
         } catch (error) {
             // 오류 처리 부분 (주석 처리된 부분은 필요에 따라 사용 가능)
             // 오류가 발생한 경우, 에러 메시지를 콘솔에 출력하거나 특정 오류에 대한 처리 진행
@@ -62,6 +66,34 @@ function MyPage() {
                 </MypageContainer>
                 {/* 프로필 설정 링크 */}
                 <StLink to={`/profile`}>프로필 설정하기</StLink>
+
+                <InputDiv mt="50px">
+                    <MypageH3 fw="500" ml="30px" mr="30px">
+                        📕
+                    </MypageH3>
+                    <MypageH3 fw="500">끝까지 읽었슴</MypageH3>
+                    <MypageH3 fw="500" ml="auto" mr="30px">
+                        0
+                    </MypageH3>
+                </InputDiv>
+                <InputDiv>
+                    <MypageH3 fw="500" ml="30px" mr="30px">
+                        💌
+                    </MypageH3>
+                    <MypageH3 fw="500">좋았슴</MypageH3>
+                    <MypageH3 fw="500" ml="auto" mr="30px">
+                        0
+                    </MypageH3>
+                </InputDiv>
+                <InputDiv>
+                    <MypageH3 fw="500" ml="30px" mr="30px">
+                        🛒
+                    </MypageH3>
+                    <MypageH3 fw="500">주문하고 싶슴</MypageH3>
+                    <MypageH3 fw="500" ml="auto" mr="30px">
+                        0
+                    </MypageH3>
+                </InputDiv>
             </MypageDiv>
         </StBody>
     );
@@ -72,22 +104,24 @@ export default MyPage;
 // 스타일 컴포넌트
 /* ... (백그라운드 및 기본 스타일) */
 export const StBody = styled.div`
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    background-color: #eae7de;
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+
     display: block; // div 요소의 display를 block으로 설정
-    /* position: fixed; */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
-
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: #eae7de;
-    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+    /* z-index: -1; */
 
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
+    padding-top: 200px;
+
     align-items: center;
 `;
 /* ... (마이페이지 영역 스타일) */
@@ -97,7 +131,7 @@ export const MypageDiv = styled.div`
 `;
 /* ... (마이페이지 컨테이너 스타일) */
 export const MypageContainer = styled.div`
-    /* height: 140px; */
+    height: 140px;
     margin-bottom: 40px;
     line-height: 0.5;
 `;
@@ -133,4 +167,21 @@ export const StLink = styled(Link)`
     &:hover {
         cursor: pointer;
     }
+`;
+export const InputDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid black;
+    height: 70px;
+    margin-top: ${(props) => props.mt};
+`;
+/* ... (H3 태그 스타일) */
+export const MypageH3 = styled.h3`
+    font-size: 25px;
+    font-weight: ${(props) => props.fw};
+    margin-top: ${(props) => props.mt};
+    margin-right: ${(props) => props.mr};
+    margin-left: ${(props) => props.ml};
+    margin-bottom: ${(props) => props.mb};
 `;

@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Cookies from 'js-cookie';
 import { api } from '../axios/api';
-// import Kakao from './Kakao';
 
 // useInput 훅
 // 입력 요소의 값을 관리하는 커스텀 훅
@@ -40,7 +39,7 @@ function Login() {
                 return;
             }
             // 서버에 로그인 요청 후 응답 처리
-            const response = await api.post('/api/member/login', {
+            const response = await api.post('/api/login', {
                 email: email,
                 password: password,
             });
@@ -60,14 +59,19 @@ function Login() {
             if (error.response) {
                 const statusCode = error.response.status;
                 const errorMessage = error.response.data.message;
-                // 상태 코드가 400이면 오류 메시지를 알림으로 표시
-                if (statusCode === 400) {
+                // 상태 코드가 404이면 오류 메시지를 알림으로 표시
+                if (statusCode === 404) {
                     alert(errorMessage);
                 }
             }
             // 그 외의 오류는 일반적인 알림으로 표시
             alert(error);
         }
+    };
+
+    const handleKakaoLogin = () => {
+        // Redirect the user to the Kakao OAuth URL
+        window.location.href = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=671600df764bdd2a2198446875a85121&redirect_uri=https://lyriczen.store/api/kakao/callback&response_type=code";
     };
 
     // useEffect(() => {
@@ -85,17 +89,16 @@ function Login() {
                     <LogoImg />
                 </LogoDiv>
                 <InputDiv>
-                {/* <Kakao /> */}
+                    {/* Kakao 로그인 버튼 */}
+                    <KakaoButton onClick={handleKakaoLogin}>
+                        <GoogleImg src="/img/Kakao.jpg" alt="logo" />
+                        카카오로 시작하기
+                    </KakaoButton>
                     {/* Google 로그인 버튼 */}
                     <GoogleButton onClick={() => navigate('/signup')}>
                         <GoogleImg src="/img/GoogleLogo.png" alt="logo" />
                         구글로 시작하기
                     </GoogleButton>
-                    {/* Kakao 로그인 버튼 */}
-                    <KakaoButton onClick={() => navigate('/signup')}>
-                        <GoogleImg src="/img/Kakao.jpg" alt="logo" />
-                        카카오로 시작하기
-                    </KakaoButton>
                     <Hr />
                     <form
                         onSubmit={(e) => {

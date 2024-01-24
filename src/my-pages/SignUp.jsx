@@ -77,7 +77,7 @@ function SignUp() {
 
         try {
             // API를 통한 회원가입 요청
-            const response = await api.post('/api/member/signup', {
+            const response = await api.post('/api/signup', {
                 name: name,
                 email: email,
                 password: password,
@@ -93,7 +93,7 @@ function SignUp() {
                 const statusCode = error.response.status;
                 const errorMessage = error.response.data.message;
                 // 오류 상태 코드 400일 경우
-                if (statusCode === 400) {
+                if (statusCode === 404) {
                     alert(errorMessage);
                 }
             }

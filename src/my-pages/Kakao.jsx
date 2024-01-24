@@ -7,6 +7,25 @@ const Kakao = ({ oAuthLoginHandler }) => {
     // 특정 API 키를 사용하려면 주석 해제
     const KAKAO_JAVASCRIPT_KEY = 'your_api_key_here';
 
+    // const onSumitHandler = (event) => {
+    //     event.preventDefault();
+    //     let requestBody = {
+    //         email,
+    //         password,
+    //     };
+    //     dispatchEvent(loginUser(requestBody));
+    // };
+
+    // const oAuthLoginHandler = (resData) => {
+    //     console.log(resData);
+    //     const { id } = resData.profile;
+    //     const { email } = resData.profile.kakao_account;
+    //     let request = {
+    //         oAuthId: id, 
+    //         email,
+    //     };
+    //     dispatchEvent(loginUser(request))
+    // };
     // KaKaoLogin 컴포넌트를 사용하여 JSX 반환
     return (
         <>
