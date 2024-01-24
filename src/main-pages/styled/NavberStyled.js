@@ -36,7 +36,7 @@ export const HeaderNavbarImg = styled.a`
     }
 `;
 
-export const HeaderNavbarIcon = styled.a`
+export const HeaderNavbarIcon = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -66,10 +66,8 @@ export const IconContainer = styled.div`
 export const NavbarUi = styled.div`
     margin-left: auto;
     margin-right: 3.2rem;
-    &.invert {
-    -webkit-filter: invert(100%);
-    filter: invert(100%);
-  } 
+
+
 `
 
 export const DropdownBox = styled.div`
