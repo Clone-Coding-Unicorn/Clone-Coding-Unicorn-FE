@@ -7,33 +7,34 @@ import { api } from '../axios/api';
 // Profile 컴포넌트
 function Profile() {
     const navigate = useNavigate();
-
     // mypageData state 정의 및 초기값 설정
     const [profileData, setProfileData] = useState({
-        email: 'web.creastory@gmail.com',
-        password: '••••••••',
-        name: 'LEE HYUN JIN',
-        birthYear: '출생년도',
-        gender: '성별',
-        emoji: '🦔',
-        job: '직업',
-        interestArea: '관심분야',
-        // deleteMember: True || False,
-        // subscribeAgree: True || False,
+        // 사용자 정보의 초기값 설정
+        email: 'web.creastory@gmail.com', // 이메일
+        password: '••••••••', // 비밀번호
+        name: 'LEE.HYUNJIN', // 닉네임
+        birthYear: '출생년도', // 출생년도
+        gender: '성별', // 성별
+        emoji: '🦔', // 이모지
+        job: '직업', // 직업
+        interestArea: '관심분야', // 관심분야
+        deleteMember: true || false, // 회원 삭제 여부
+        subscribeAgree: true || false, // 구독 동의 여부
     });
 
     // 서버에서 사용자 정보를 가져오는 함수
     const getProfile = async () => {
         try {
+            // 서버로부터 사용자 프로필 정보 요청
             const response = await api.get(`/api/user/profile`);
-
             // 서버에서 받아온 사용자 정보로 state 업데이트
             setProfileData({
-                email: response.data.email,
-                password: response.data.password,
-                name: response.data.name,
-                emoji: response.data.emoji,
+                email: response.data.email,         // 이메일 업데이트
+                password: response.data.password,   // 비밀번호 업데이트
+                name: response.data.name,           // 닉네임 업데이트
+                emoji: response.data.emoji,         // 이모지 업데이트
             });
+            // 프로필 수정이 완료되면 알림창 표시 및 홈페이지로 이동
             if (response.status === 200) {
                 alert('프로필 수정이 완료되었습니다.');
                 navigate('/');
@@ -50,13 +51,15 @@ function Profile() {
         }
     };
 
+    const logout = () => {
+        Cookies.remove('token');
+    };
     // 컴포넌트가 마운트될 때 한 번만 실행되는 useEffect
     useEffect(() => {
         // const token = Cookies.get('token');
         // 서버에서 사용자 정보를 가져오는 함수 호출
         getProfile();
     }, []);
-
     // JSX로 화면 구성
     return (
         <StBody>
@@ -64,7 +67,7 @@ function Profile() {
                 <ProfileHeadDiv>
                     {/* 사용자에게 환영하는 메시지 */}
                     <MypageH1 fw="400">{profileData.name} 뉴니커,</MypageH1>
-                    <MypageH1 fw="400">어떤 사람인지 더 알고 싶어요!</MypageH1>
+                    <MypageH1 fw="400">어떤 사람인지 더 알고 싶슴!</MypageH1>
                 </ProfileHeadDiv>
                 <>
                     {/* 뉴니커 정보 섹션 */}
@@ -154,7 +157,7 @@ function Profile() {
                             비밀번호
                         </MypageH3>
                         <MypageH3 fw="500" type="password">
-                        {profileData.password}
+                            {profileData.password}
                         </MypageH3>
                         <MypageH3 fw="500" ml="auto" mr="30px">
                             ➡
@@ -179,7 +182,7 @@ function Profile() {
                 </>
                 {/* 로그아웃 및 계정 삭제 링크 */}
                 <LogOuter>
-                    <StLink to={`/`}>로그아웃</StLink>
+                    <StLink to={`/`} onClick={logout}>로그아웃</StLink>
                     <StLink to={`/login`}>계정 삭제하기</StLink>
                 </LogOuter>
             </ProfileDiv>

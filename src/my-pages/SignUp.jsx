@@ -142,7 +142,7 @@ function SignUp() {
                         {passwordValid === null ? null : passwordValid ? (
                             <StSpan color="green">사용 가능합니다</StSpan>
                         ) : (
-                            <StSpan color="red">비밀번호는 대문자/소문자/특수문자를 포함하여 8자 이상 가능해요</StSpan>
+                            <StSpan color="red">비밀번호는 대/소문자/특수문자를 포함하여 8자 이상 가능해요</StSpan>
                         )}
                         {/* 비밀번호 확인 입력 필드 */}
                         <InputTag
@@ -151,6 +151,12 @@ function SignUp() {
                             onChange={setPasswordConfirm}
                             placeholder="비밀번호 확인(8자 이상)"
                         />
+                        {/*비밀번호 확인 유효성 메시지*/}
+                        {password === passwordConfirm ? passwordValid : null ? (
+                            <StSpan color="green">비밀번호가 일치합니다</StSpan>
+                        ) : (
+                            <StSpan color="red">비밀번호가 달라요</StSpan>
+                        )}
                         {/* 닉네임 입력 필드 */}
                         <InputTag type="text" value={name} onChange={setName} placeholder="닉네임" />
                         {/* CheckBox 컴포넌트 */}
