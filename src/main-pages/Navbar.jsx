@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { HeaderNavbarIcon, HeaderNavbarImg, HeaderNavbarInner, HeaderNavbarLeft, HeaderNavbarStyle, SearchIcon, IconContainer, NavbarUi, DropdownBox } from "./styled/NavberStyled";
 import { useNavigate } from "react-router-dom";
 import surf from "./img/logo.png"
@@ -13,8 +13,8 @@ function CustomNavbar() {
   const [showDropdown, setShowDropdown] = useState(false);
   // 토큰 유무 확인
   const signOutButtonHandler = () => {
-    if (Cookies.get("token")) {
-      Cookies.remove("token");
+    if (Cookies.get("Authorization")) {
+      Cookies.remove("Authorization");
       navigate("/");
     } else {
       navigate("/login");
@@ -27,6 +27,9 @@ function CustomNavbar() {
   };
   // 버튼 클릭 유무
   const handleLoginIconClick = () => {
+    console.log(Cookies.get("Authorization"));
+
+
     setShowDropdown(!showDropdown);
   };
   return (
@@ -38,10 +41,10 @@ function CustomNavbar() {
         </HeaderNavbarImg>
         {/* invert 모드 */}
         <NavbarUi>
-        <input type="checkbox" id="toggle" hidden onClick={handleButtonClick}/>
-            <label htmlFor="toggle" className="toggleSwitch">
-              <span className="toggleButton"></span>
-            </label>
+          <input type="checkbox" id="toggle" hidden onClick={handleButtonClick} />
+          <label htmlFor="toggle" className="toggleSwitch">
+            <span className="toggleButton"></span>
+          </label>
         </NavbarUi>
         <IconContainer>
           <HeaderNavbarIcon>
@@ -54,20 +57,17 @@ function CustomNavbar() {
             {/* 상단 이모티콘 눌렀을때 */}
             {showDropdown && (
               // 로그인&로그아웃 유무 확인
-              <DropdownBox >
-                {
-                  Cookies.get("token") ? (
-                    <>
-                      <a href="/mypage">마이페이지</a>
-                      <a href="/profile">프로필</a>
-                      <a onClick={signOutButtonHandler} href="/">로그아웃</a>
-                    </>
-                  )
-                    :
-                    (
-                      <a href="/login">로그인</a>
-                    )
-                }
+              <DropdownBox>
+                {Cookies.get("Authorization") ? (
+                  <>
+                    <a href="/mypage">마이페이지</a>
+                    <a href="/profile">프로필</a>
+                    <a onClick={signOutButtonHandler} href="/">로그아웃</a>
+                  </>
+                ) : (
+                  <a href="/login">로그인</a>
+                )}
+
               </DropdownBox>
             )}
           </HeaderNavbarIcon>
