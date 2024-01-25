@@ -37,11 +37,12 @@ export const MarqueeText = styled.div`
 `;
 
 export const HoverText = styled.div`
-    position: relative;
+    position: absolute;
     text-align: center;
     font-size: 1.5rem;
     padding: 10px;
     visibility: visible;
+
 `;
 
 export const HoverContainer = styled.div`

@@ -13,7 +13,7 @@ export const HeaderNavbarInner = styled.div`
     justify-content: space-between;
     max-width: 1360px;
     margin: 0 auto;
-    padding: 3rem 5% 2.5rem;
+    padding: 2rem 3% 1.5rem;
 `;
 
 export const HeaderNavbarLeft = styled.div`
@@ -36,7 +36,7 @@ export const HeaderNavbarImg = styled.a`
     }
 `;
 
-export const HeaderNavbarIcon = styled.a`
+export const HeaderNavbarIcon = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -62,3 +62,64 @@ export const IconContainer = styled.div`
             visibility: hidden;
     }
     `;
+
+export const NavbarUi = styled.div`
+    margin-left: auto;
+    margin-right: 3.2rem;
+
+    .toggleSwitch {
+  width: 100px;
+  height: 50px;
+  display: block;
+  position: relative;
+  border-radius: 30px;
+  background-color: #fff;
+  box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
+  cursor: pointer;
+  margin: 30px;
+}
+
+.toggleSwitch .toggleButton {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: black;
+}
+
+#toggle:checked ~ .toggleSwitch {
+  background: white;
+}
+
+#toggle:checked ~ .toggleSwitch .toggleButton {
+  left: calc(100% - 44px);
+  background: black;
+}
+
+.toggleSwitch, .toggleButton {
+  transition: all 0.2s ease-in;
+}
+`
+
+export const DropdownBox = styled.div`
+position: absolute;
+top: 100%;
+background-color: #fff;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+padding: 16px; 
+  width: 200px;
+a {
+    display: block;
+    padding: 8px 16px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #f2f2f2;
+    }
+  }
+`;
