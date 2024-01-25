@@ -9,13 +9,13 @@ export const api = axios.create({
 });
 
 // api.interceptors.request.use((api) => {
-//     const access_token = Cookies.get("access_token");
+//     const access_token = Cookies.get("token");
 //     const refresh_token = Cookies.get("refresh_token");
 //     // if (api.url === "/api/sign-in") {
 //     //     api.headers.Refresh = `Bearer ${refresh_token}`;
 //     // } else {
 //     // api.headers.Authorization = `Bearer ${access_token}`;
-//     api.headers.Authorization = `${access_token}`;
+//     api.headers.Authorization = `${token}`;
 //     // }
 //     return api;
 // });

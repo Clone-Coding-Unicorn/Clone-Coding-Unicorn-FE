@@ -57,18 +57,26 @@ function DetailPages() {
     return (
         <div>
             <PostContainer>
-                <PostScrollWrap visible={scrollPosition > 5}><p>{posts.title}</p>
+                <PostScrollWrap visible={scrollPosition > 5}><p>{posts && posts.title}</p>
                     <PostHeadProgress style={{ width: `${scrollPosition}%` }}></PostHeadProgress>
                 </PostScrollWrap>
             </PostContainer>
             <PostHead>
-                <p>{posts.category}</p>
-                <h1>{posts.title}</h1>
-                <p>{posts.date}</p>
+                {posts && (
+                    <>
+                        <p>{posts.category}</p>
+                        <h1>{posts.title}</h1>
+                        <p>{posts.date}</p>
+                    </>
+                )}
             </PostHead>
             <PostBody>
-                <img src={posts.imageUrl} alt="..." />
-                <div dangerouslySetInnerHTML={{ __html: posts.contents }} />
+                {posts && (
+                    <>
+                        <img src={posts.imageUrl} alt="..." />
+                        <div dangerouslySetInnerHTML={{ __html: posts.contents }} />
+                    </>
+                )}
             </PostBody>
             <PostSubscribe>
                 <PostSubscribeGroup>
