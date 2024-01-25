@@ -6,6 +6,7 @@ import { api } from '../axios/api';
 
 // MyPage 컴포넌트
 function MyPage() {
+    const navigate = useNavigate();
     // mypageData state 정의 및 초기값 설정
     const [mypageData, setMypageData] = useState({
         name: 'LEE.HYUNJIN', // 이름 초기값
@@ -62,7 +63,7 @@ function MyPage() {
                 {/* 프로필 설정 링크 */}
                 <StLink to={`/profile`}>프로필 설정하기</StLink>
 
-                <InputDiv mt="50px">
+                <InputDiv mt="50px" onClick={() => navigate('/mypage1')} >
                     <MypageH3 fw="500" ml="30px" mr="30px">
                         📕
                     </MypageH3>
@@ -71,7 +72,7 @@ function MyPage() {
                         0
                     </MypageH3>
                 </InputDiv>
-                <InputDiv>
+                <InputDiv onClick={() => navigate('/mypage2')}>
                     <MypageH3 fw="500" ml="30px" mr="30px">
                         💌
                     </MypageH3>
@@ -80,16 +81,16 @@ function MyPage() {
                         0
                     </MypageH3>
                 </InputDiv>
-                <InputDiv>
+                <InputDiv onClick={() => navigate('/mypage3')}>
                     <MypageH3 fw="500" ml="30px" mr="30px">
                         🛒
                     </MypageH3>
-                    <MypageH3 fw="500">주문하고 싶슴</MypageH3>
+                    <MypageH3 fw="500">주문 내역</MypageH3>
                     <MypageH3 fw="500" ml="auto" mr="30px">
                         0
                     </MypageH3>
                 </InputDiv>
-                <button onClick={() => getMypage()}>확인</button>
+                {/* <button onClick={() => getMypage()}>확인</button> */}
             </MypageDiv>
         </StBody>
     );
@@ -171,6 +172,11 @@ export const InputDiv = styled.div`
     border: 1px solid black;
     height: 70px;
     margin-top: ${(props) => props.mt};
+    &:hover {
+        cursor: pointer;
+        background-color: black;
+        color: white;
+    }
 `;
 /* ... (H3 태그 스타일) */
 export const MypageH3 = styled.h3`

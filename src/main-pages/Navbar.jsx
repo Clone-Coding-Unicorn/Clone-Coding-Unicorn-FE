@@ -5,22 +5,19 @@ import surf from "./img/logo.png"
 import searchImg from "./img/search.png"
 import login from "./img/login.png"
 import Cookies from 'js-cookie';
-
 function CustomNavbar() {
   const navigate = useNavigate();
   const [isClicked, setIsClicked] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-
-  // 토큰 유무 확인 
+  // 토큰 유무 확인
   const signOutButtonHandler = () => {
-    if (Cookies.get("accessToken")) {
-      Cookies.remove("accessToken");
+    if (Cookies.get("token")) {
+      Cookies.remove("token");
       navigate("/");
     } else {
       navigate("/login");
     }
   };
-
   // class = invert 전역적으로 만들어주는 함수
   const handleButtonClick = () => {
     setIsClicked(!isClicked);
@@ -54,7 +51,7 @@ function CustomNavbar() {
               // 로그인&로그아웃 유무 확인
               <DropdownBox >
                 {
-                  Cookies.get("accessToken") ? (
+                  Cookies.get("token") ? (
                     <>
                       <a href="/mypage">마이페이지</a>
                       <a href="/profile">프로필</a>
@@ -74,5 +71,4 @@ function CustomNavbar() {
     </HeaderNavbarStyle>
   );
 }
-
 export default CustomNavbar;

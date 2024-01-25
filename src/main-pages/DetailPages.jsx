@@ -3,18 +3,13 @@ import { useParams } from 'react-router-dom';
 import { PostBody, PostHead, PostSubmit, PostSubscribe, PostSubscribeGroup, PostTextfield } from './styled/DetailPages';
 import { api } from '../axios/api';
 import CustomLoading from './Loading';
-import { PostHead } from './styled/DetailPages';
-
 function DetailPages() {
     const { id } = useParams();
     const [posts, setPosts] = useState(null);
     const [loading, setLoading] = useState(true);
-
     // 스크롤 이벤트를 하기위한 스크롤 수치
     const [scrollPosition, setScrollPosition] = useState(0);
-
     useEffect(() => {
-
         const fetchData = async () => {
             try {
                 if (!id) {
@@ -25,20 +20,30 @@ function DetailPages() {
                 console.log(response);
                 setPosts(response.data);
             } catch (error) {
-                console.error("에러 발생:", error);
+                console.error('에러 발생:', error);
             } finally {
                 // 로딩 상태 변경
                 setLoading(false);
             }
         };
         fetchData();
-        // window.addEventListener('scroll', handleScroll, { capture: true }); // 스크롤 이벤트 등록
-        // return () => {
-        //   window.removeEventListener('scroll', handleScroll); 		// 스크롤 이벤트 제거
-        // };
-
+        const handleScroll = () => {
+            // 현재 스크롤 위치
+            const scrollY = window.scrollY;
+            // 문서의 전체 높이
+            const documentHeight = document.documentElement.scrollHeight - 1600;
+            // 스크롤 위치를 퍼센티지로 계산
+            const percentage = (scrollY / documentHeight) * 100;
+            // state 업데이트
+            setScrollPosition(percentage);
+        };
+        window.addEventListener('scroll', handleScroll); // 스크롤 이벤트 등록
+        return () => {
+            window.removeEventListener('scroll', handleScroll); // 스크롤 이벤트 제거
+        };
+    }, []);
     if (loading) {
-        return <CustomLoading />
+        return <CustomLoading />;
     }
     return (
         <div>
@@ -53,18 +58,12 @@ function DetailPages() {
             </PostBody>
             <PostSubscribe>
                 <PostSubscribeGroup>
-                    <PostTextfield placeholder="이메일 주소">
-                        
-                    </PostTextfield>
-                    <PostSubmit>
-                        뉴스레터 구독하기
-                    </PostSubmit>
+                    <PostTextfield placeholder="이메일 주소"></PostTextfield>
+                    <PostSubmit>뉴스레터 구독하기</PostSubmit>
                 </PostSubscribeGroup>
             </PostSubscribe>
-
-
+            <p>현재 스크롤 위치: {scrollPosition}</p>
         </div>
-    )
+    );
 }
-
-export default DetailPages
+export default DetailPages;
