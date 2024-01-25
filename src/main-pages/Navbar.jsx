@@ -5,6 +5,8 @@ import surf from "./img/logo.png"
 import searchImg from "./img/search.png"
 import login from "./img/login.png"
 import Cookies from 'js-cookie';
+import { Link } from 'react-router-dom';
+
 function CustomNavbar() {
   const navigate = useNavigate();
   const [isClicked, setIsClicked] = useState(false);
@@ -36,13 +38,16 @@ function CustomNavbar() {
         </HeaderNavbarImg>
         {/* invert 모드 */}
         <NavbarUi>
-          <button onClick={handleButtonClick} >
-            Click me
-          </button>
+        <input type="checkbox" id="toggle" hidden onClick={handleButtonClick}/>
+            <label htmlFor="toggle" className="toggleSwitch">
+              <span className="toggleButton"></span>
+            </label>
         </NavbarUi>
         <IconContainer>
           <HeaderNavbarIcon>
-            <SearchIcon src={searchImg} alt="검색" />
+            <Link to="/search">
+              <SearchIcon src={searchImg} alt="검색" />
+            </Link>
           </HeaderNavbarIcon>
           <HeaderNavbarIcon onClick={handleLoginIconClick}>
             <SearchIcon src={login} alt="로그인" />

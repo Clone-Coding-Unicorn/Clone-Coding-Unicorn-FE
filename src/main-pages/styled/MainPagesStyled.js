@@ -119,7 +119,6 @@ export const HomeRecent = styled.section`
 .card-group {
     display: flex;
     flex-wrap: wrap;
-    position: relative;
     border-color: #051619;
     border-style: solid;
     border-width: 1px 0 0 1px;
