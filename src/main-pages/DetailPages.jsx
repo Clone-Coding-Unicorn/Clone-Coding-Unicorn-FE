@@ -47,7 +47,6 @@ function DetailPages() {
             window.removeEventListener('scroll', handleScroll); 		// 스크롤 이벤트 제거
         };
     }, []);
-  
     if (loading) {
         return <CustomLoading />;
     }
