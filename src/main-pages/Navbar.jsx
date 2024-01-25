@@ -57,6 +57,7 @@ function CustomNavbar() {
               <DropdownBox >
                 {
                   Cookies.get("Authorization") ? (
+
                     <>
                       <a href="/mypage">마이페이지</a>
                       <a href="/profile">프로필</a>
