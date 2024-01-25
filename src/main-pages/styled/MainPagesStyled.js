@@ -208,6 +208,7 @@ export const HomeRecentPagination = styled.div`
             color: #fff;
         }
     }
+
 `
 
 // 하단 카드 배너

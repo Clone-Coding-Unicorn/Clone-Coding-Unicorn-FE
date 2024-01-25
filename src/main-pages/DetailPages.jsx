@@ -51,6 +51,7 @@ function DetailPages() {
         };
     }, []);
 
+
     if (loading) {
         return <CustomLoading />
     }
@@ -77,10 +78,12 @@ function DetailPages() {
                         <div dangerouslySetInnerHTML={{ __html: posts.contents }} />
                     </>
                 )}
+
             </PostBody>
             <PostSubscribe>
                 <PostSubscribeGroup>
                     <PostTextfield placeholder="이메일 주소">
+
                     </PostTextfield>
                     <PostSubmit>
                         뉴스레터 구독하기

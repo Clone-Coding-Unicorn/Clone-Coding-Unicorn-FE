@@ -44,6 +44,7 @@ function Categorypages() {
                 </MainCategoryInner>
             </MainCategory>
             <h2>&nbsp;{category}</h2>
+
             {/* 로딩중 */}
             {loading ? (
                 <CustomLoading />

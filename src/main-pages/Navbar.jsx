@@ -15,6 +15,7 @@ function CustomNavbar() {
   const signOutButtonHandler = () => {
     if (Cookies.get("token")) {
       Cookies.remove("token");
+
       navigate("/");
     } else {
       navigate("/login");

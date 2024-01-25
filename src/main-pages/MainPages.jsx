@@ -75,13 +75,13 @@ function MainPages() {
               <CategoryLink key={category} href={`/posts/${category}`}>{category}</CategoryLink>
             );
           })}
+
         </MainCategoryInner>
       </MainCategory>
       {/* 로딩시 */}
       {loading ? (
         <CustomLoading />
       ) : (
-
         <HomeRecent>
           {/* 카드부분 */}
           <div className="card-group" >
@@ -100,7 +100,6 @@ function MainPages() {
             <button onClick={handleLoadMore}>더보기</button>
           </HomeRecentPagination>
         </HomeRecent>
-
       )}
       {/* 하단 빛나는 고슴이 */}
       <HomeBanner href="/">
