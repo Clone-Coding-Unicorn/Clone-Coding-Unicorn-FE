@@ -47,7 +47,7 @@ function Login() {
             console.log(response);
 
             // 로그인 성공 시 서버에서 반환한 토큰을 쿠키에 저장
-            // Cookies.set('token', response.headers.authorization);
+            Cookies.set('Authorization', response.data.token);
 
             // 응답 상태가 200이면 로그인 완료 메시지를 표시하고 메인 페이지로 이동
             if (response.status === 200) {
