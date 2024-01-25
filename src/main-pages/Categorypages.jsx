@@ -28,21 +28,23 @@ function Categorypages() {
         };
         fetchData();
     }, []);
+
     return (
         <>
             <MainCategory>
                 {/* 카테고리 부분 */}
                 <MainCategoryInner>
-                    {['전체', '증권', '부동산', '경제 · 금융', '산업', '정치', '사회', '국제', '오피니언', '문화 · 스포츠', '서경'].map(category => {
-                        if (category === '전체')
-                            return <CategoryLink key={category} href="/">전체</CategoryLink>
+                    {['전체', '증권', '부동산', '경제 · 금융', '산업', '정치', '사회', '국제', '오피니언', '문화 · 스포츠', '서경'].map(item => {
+                        if (item === '전체')
+                            return <CategoryLink key={item} href="/">전체</CategoryLink>
                         return (
-                            <CategoryLink key={category} href={`/posts/${category}`}>{category}</CategoryLink>
+                            <CategoryLink active={category === item} key={item} href={`/posts/${item}`} >{item}</CategoryLink>
                         );
                     })}
                 </MainCategoryInner>
             </MainCategory>
-            {category}
+            <h2>&nbsp;{category}</h2>
+
             {/* 로딩중 */}
             {loading ? (
                 <CustomLoading />
