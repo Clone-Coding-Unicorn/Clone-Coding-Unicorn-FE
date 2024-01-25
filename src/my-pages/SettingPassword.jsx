@@ -69,7 +69,7 @@ const ProfilePassword = ({ data, title, request }) => {
                 {toggle && <div style={{ fontSize: '1rem' }}>••••••••</div>}
                 {!toggle && (
                     <form onSubmit={patchData}>
-                        <fieldset>
+                        <>
                             <legend aria-hidden="true" hidden={true}>
                                 필수입력
                             </legend>
@@ -89,19 +89,19 @@ const ProfilePassword = ({ data, title, request }) => {
                                 ref={passwordConfirmRef}
                                 small={passwordConfirmAlert}
                             />
-                        </fieldset>
+                        </>
 
                         <Footer>
-                            <button type="submit" className="setting-row-foot-confirm primary-button">
+                            <ChangeBtn type="submit" className="setting-row-foot-confirm primary-button">
                                 변경하기
-                            </button>
-                            <button
+                            </ChangeBtn>
+                            <CancleBtn
                                 type="button"
                                 className="setting-row-foot-cancel teriary-button"
                                 onClick={() => setToggle(true)}
                             >
                                 취소
-                            </button>
+                            </CancleBtn>
                         </Footer>
                     </form>
                 )}
@@ -176,5 +176,55 @@ export const Footer = styled.footer`
         background: none;
         border: none;
         color: #051619;
+    }
+`;
+/* ... (변경 버튼 스타일) */
+export const ChangeBtn = styled.button`
+    justify-content: center;
+    align-items: center;
+    width: 110px;
+    height: 50px;
+    padding: 10px;
+
+    background-color: black;
+
+    border-radius: 7px;
+
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+
+    margin-bottom: 10px;
+    margin-right: 10px;
+
+    &:hover {
+        color: black;
+        background-color: white;
+        cursor: pointer;
+    }
+`;
+/* ... (취소 버튼 스타일) */
+export const CancleBtn = styled.button`
+    justify-content: center;
+    align-items: center;
+    width: 110px;
+    height: 50px;
+    padding: 10px;
+
+    background-color: #eae7de;
+    border: none;
+    border-radius: 7px;
+
+    color: #605f5f;
+    font-size: 15px;
+    font-weight: 600;
+
+    margin-bottom: 10px;
+
+    &:hover {
+        color: #605f5f;
+        background-color: #eae7de;
+        border: 1px solid black;
+        cursor: pointer;
     }
 `;

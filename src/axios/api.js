@@ -9,7 +9,7 @@ export const api = axios.create({
 
 
 api.interceptors.request.use((api) => {
-    const access_token = Cookies.get("token");
+    const access_token = Cookies.get("Authorization");
     if(api.url ==="/api/login" || api.url === "/api/signup"){
         return api
     }

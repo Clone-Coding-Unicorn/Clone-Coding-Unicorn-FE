@@ -76,7 +76,7 @@ export default ProfileValue;
 export const DivRow = styled.div`
     margin: -1px calc(-2rem - 2px) 0;
     display: -webkit-flex;
-    padding: 1.5rem 2rem;
+    padding: 1rem 1rem;
     box-sizing: border-box;
     border: 1px solid #051619;
     cursor: pointer;

@@ -47,7 +47,7 @@ function Login() {
             console.log(response);
 
             // 로그인 성공 시 서버에서 반환한 토큰을 쿠키에 저장
-            Cookies.set('token', response.headers.authorization);
+            // Cookies.set('token', response.headers.authorization);
 
             // 응답 상태가 200이면 로그인 완료 메시지를 표시하고 메인 페이지로 이동
             if (response.status === 200) {
@@ -72,10 +72,10 @@ function Login() {
     const KakaoLogin = () => {
         // Redirect the user to the Kakao OAuth URL
         window.location.href =
-            'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=671600df764bdd2a2198446875a85121&redirect_uri=https://lyriczen.store/api/kakao/callback&response_type=code';
+            'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=671600df764bdd2a2198446875a85121&redirect_uri=https://neeks.shop/api/kakao/callback&response_type=code';
         // Cookies.set('token', response.data.token);
         // // 쿠키 저장하는 코드!
-        if(Cookies.get('token')){
+        if(Cookies.get('Authorization')){
             navigate('/');
         }
     };
@@ -83,15 +83,16 @@ function Login() {
     const GoogleLogin = () => {
         // Redirect the user to the Kakao OAuth URL
         window.location.href =
-            'https://accounts.google.com/o/oauth2/v2/auth?client_id=20851922201-isrde3fhu3j87nmrhl8ueivo9pifbgdb.apps.googleusercontent.com&redirect_uri=https://lyriczen.store/api/login/oauth2/code/google&response_type=code&scope=email profile';
+            'https://accounts.google.com/o/oauth2/v2/auth?client_id=20851922201-isrde3fhu3j87nmrhl8ueivo9pifbgdb.apps.googleusercontent.com&redirect_uri=https://neeks.shop/api/login/oauth2/code/google&response_type=code&scope=email profile';
         // // 쿠키 저장하는 코드!
-        if(Cookies.get('token')){
+        if(Cookies.get('Authorization')){
             navigate('/');
         }
     };
 
+
     useEffect(() => {
-        const token = Cookies.get('token');
+        const token = Cookies.get('Authorization');
         if (token) {
             navigate('/');
         } else 

@@ -40,7 +40,7 @@ function MyPage() {
     
     // 컴포넌트가 마운트될 때 한 번만 실행되는 useEffect
     useEffect(() => {
-        Cookies.get('token');
+        Cookies.get('Authorization');
         // 서버에서 사용자 정보를 가져오는 함수 호출
         getMypage();
     }, []);

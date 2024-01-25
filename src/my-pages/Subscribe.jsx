@@ -39,7 +39,7 @@ const DivRow = styled.div`
     display: -webkit-flex;
     display: flex;
     margin-top: -1px;
-    padding: 1.5rem 2rem;
+    padding: 1rem 1rem;
     box-sizing: border-box;
     overflow: hidden;
     border: 1px solid #051619;

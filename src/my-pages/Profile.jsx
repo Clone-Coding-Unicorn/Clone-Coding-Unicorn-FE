@@ -54,11 +54,11 @@ function Profile() {
     };
 
     const logout = () => {
-        Cookies.remove('token');
+        Cookies.remove('Authorization');
     };
     // 컴포넌트가 마운트될 때 한 번만 실행되는 useEffect
     useEffect(() => {
-        Cookies.get('token');
+        Cookies.get('Authorization');
         // 서버에서 사용자 정보를 가져오는 함수 호출
         getProfile();
     }, []);
@@ -142,7 +142,7 @@ export default Profile;
 /* ... (프로필 영역 스타일) */
 export const ProfileDiv = styled.div`
     width: 1340px;
-    height: 1500px;
+    height: 1600px;
 `;
 /* ... (프로필 헤더 스타일) */
 export const ProfileHeadDiv = styled.div`
@@ -251,7 +251,7 @@ export const Section = styled.section`
     }
 
     .setting-body h2 {
-        margin: 0 0 1rem;
+        margin: 0 0 2rem;
         font-size: 1.25rem;
     }
 
@@ -343,7 +343,7 @@ export const DivRow = styled.div`
     display: -webkit-flex;
     display: flex;
     margin-top: -1px;
-    padding: 1.5rem 2rem;
+    padding: 1rem 1rem;
     box-sizing: border-box;
     overflow: hidden;
     border: 1px solid #051619;
