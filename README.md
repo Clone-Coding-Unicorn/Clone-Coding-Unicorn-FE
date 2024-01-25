@@ -1,70 +1,23 @@
-# Getting Started with Create React App
+# 뉴닉 클론 프로젝트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 프로젝트 소개
+뉴닉 클론 프로젝트는 뉴닉이라는 뉴스 플랫폼의 클론을 구현한 프로젝트입니다. 이 프로젝트는 주요한 뉴닉 기능들을 재현하고, 사용자에게 편리하고 직관적인 사용 경험을 제공하는 것을 목표로 합니다.
 
-## Available Scripts
+### 1. 뉴스 카테고리
+다양한 뉴스 카테고리를 제공하여 사용자가 원하는 주제에 따라 뉴스를 탐색할 수 있습니다.
+'전체', '증권', '부동산', '경제 · 금융', '산업', '정치', '사회', '국제', '오피니언', '문화 · 스포츠', '서경' 등의 다양한 카테고리가 포함되어 있습니다.
 
-In the project directory, you can run:
+### 2. 개별 뉴스 페이지
+각 뉴스는 개별 페이지에서 자세한 내용을 확인할 수 있습니다.
+뉴스의 제목, 이미지, 작성일, 내용 등이 표시되어 사용자에게 풍부한 정보를 제공합니다.
 
-### `yarn start`
+## 기술 스택
+Frontend: React.js, Styled Components
+API 통신: Axios
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 참고 자료
+뉴닉 공식 사이트(https://newneek.co/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 기여자
+강혜성
+이현진
