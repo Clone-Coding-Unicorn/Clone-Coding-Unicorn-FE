@@ -44,7 +44,7 @@ function DetailPages() {
         };
         window.addEventListener('scroll', handleScroll); // 스크롤 이벤트 등록
         return () => {
-            window.removeEventListener('scroll', handleScroll); 		// 스크롤 이벤트 제거
+            window.removeEventListener('scroll', handleScroll);// 스크롤 이벤트 제거
         };
     }, []);
     if (loading) {
