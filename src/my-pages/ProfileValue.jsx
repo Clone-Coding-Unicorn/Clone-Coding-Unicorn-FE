@@ -2,7 +2,9 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { api } from '../axios/api';
 
+// 프로필 값을 표시하고 수정할 수 있는 컴포넌트
 const ProfileValue = ({ title, data, request, onChange }) => {
+    // 토글 상태 및 값 상태를 설정
     const [toggle, setToggle] = useState(true);
     const [value, setValue] = useState(data);
 
@@ -17,10 +19,10 @@ const ProfileValue = ({ title, data, request, onChange }) => {
     const patchData = async (e) => {
         e.preventDefault();
         const requestData = {};
-        requestData[request] = data;
+        requestData[request] = value; // 수정된 값을 사용
 
         // API 호출을 통해 데이터를 업데이트하고, 성공 시 토글을 true로 설정하고 onChange 콜백 호출
-        await api.get('/api/profile', requestData).then((res) => {
+        await api.patch('/api/profile', requestData).then((res) => {
             if (res.data.success) {
                 setToggle(true);
                 onChange(value);
@@ -29,7 +31,7 @@ const ProfileValue = ({ title, data, request, onChange }) => {
     };
 
     return (
-        <DivRow onClick={handleToggle} style={{ cursor: 'pointer' }}>
+        <DivRow onClick={handleToggle}>
             <h2 className="setting-row-label">{title}</h2>
             <DivValue>
                 {/* 토글 상태에 따라 데이터를 보여주거나 폼을 보여줌 */}
@@ -48,16 +50,15 @@ const ProfileValue = ({ title, data, request, onChange }) => {
                         </div>
                         <Footer>
                             {/* 데이터 변경을 확인하거나 취소할 수 있는 버튼들 */}
-                            <button type="submit" className="setting-row-foot-confirm primary-button">
+                            <ChangeBtn type="submit">
                                 변경하기
-                            </button>
-                            <button
+                            </ChangeBtn>
+                            <CancleBtn
                                 type="button"
-                                className="setting-row-foot-cancel teriary-button"
                                 onClick={() => setToggle(true)}
                             >
                                 취소
-                            </button>
+                            </CancleBtn>
                         </Footer>
                     </form>
                 )}
@@ -71,27 +72,18 @@ const ProfileValue = ({ title, data, request, onChange }) => {
 
 export default ProfileValue;
 
-const DivRow = styled.div`
+// 스타일드 컴포넌트로 스타일 정의
+export const DivRow = styled.div`
     margin: -1px calc(-2rem - 2px) 0;
     display: -webkit-flex;
-    display: flex;
-    margin-top: -1px;
     padding: 1.5rem 2rem;
     box-sizing: border-box;
-    overflow: hidden;
     border: 1px solid #051619;
-    border-top-color: rgb(5, 22, 25);
-    border-top-style: solid;
-    border-top-width: 1px;
     cursor: pointer;
     position: relative;
-
-    :first-of-type {
-        border-top: 1px solid #051619;
-    }
 `;
 
-const DivValue = styled.div`
+export const DivValue = styled.div`
     form {
         display: block;
         margin-top: 0em;
@@ -106,7 +98,7 @@ const DivValue = styled.div`
         display: block;
         width: 100%;
         padding: 10px 40px 11px 1.5rem;
-        border: 1px solid #051619;
+        /* border: 1px solid #051619; */
         border-radius: 0;
         box-sizing: border-box;
         box-shadow: 0;
@@ -118,10 +110,10 @@ const DivValue = styled.div`
     }
 `;
 
-const Footer = styled.footer`
+export const Footer = styled.footer`
     display: block;
 
-    .teriary-button {
+    .tertiary-button {
         display: inline-block;
         min-width: 104px;
         background: #ff6b00;
@@ -135,5 +127,69 @@ const Footer = styled.footer`
         background: none;
         border: none;
         color: #051619;
+    }
+`;
+export const MypageH1 = styled.h1`
+    font-size: 15px;
+    font-weight: ${(props) => props.fw};
+    margin-top: ${(props) => props.mt};
+    margin-right: ${(props) => props.mr};
+    margin-left: ${(props) => props.ml};
+    margin-bottom: ${(props) => props.mb};
+`;
+/* ... (버튼 영역 스타일) */
+export const ButtonDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;
+/* ... (변경 버튼 스타일) */
+export const ChangeBtn = styled.button`
+    justify-content: center;
+    align-items: center;
+    width: 110px;
+    height: 50px;
+    padding: 10px;
+
+    background-color: black;
+
+    border-radius: 7px;
+
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+
+    margin-bottom: 10px;
+    margin-right: 10px;
+
+    &:hover {
+        color: black;
+        background-color: white;
+        cursor: pointer;
+    }
+`;
+/* ... (취소 버튼 스타일) */
+export const CancleBtn = styled.button`
+    justify-content: center;
+    align-items: center;
+    width: 110px;
+    height: 50px;
+    padding: 10px;
+
+    background-color: #eae7de;
+    border: none;
+    border-radius: 7px;
+
+    color: #605f5f;
+    font-size: 15px;
+    font-weight: 600;
+
+    margin-bottom: 10px;
+
+    &:hover {
+        color: #605f5f;
+        background-color: #eae7de;
+        border: 1px solid black;
+        cursor: pointer;
     }
 `;

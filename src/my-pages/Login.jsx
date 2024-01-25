@@ -69,11 +69,21 @@ function Login() {
         }
     };
 
-    const handleKakaoLogin = () => {
+    const KakaoLogin = () => {
         // Redirect the user to the Kakao OAuth URL
         window.location.href =
             'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=671600df764bdd2a2198446875a85121&redirect_uri=https://lyriczen.store/api/kakao/callback&response_type=code';
         // Cookies.set('token', response.data.token);
+        // // 쿠키 저장하는 코드!
+        if(Cookies.get('token')){
+            navigate('/');
+        }
+    };
+
+    const GoogleLogin = () => {
+        // Redirect the user to the Kakao OAuth URL
+        window.location.href =
+            'https://accounts.google.com/o/oauth2/v2/auth?client_id=20851922201-isrde3fhu3j87nmrhl8ueivo9pifbgdb.apps.googleusercontent.com&redirect_uri=https://lyriczen.store/api/login/oauth2/code/google&response_type=code&scope=email profile';
         // // 쿠키 저장하는 코드!
         if(Cookies.get('token')){
             navigate('/');
@@ -97,12 +107,12 @@ function Login() {
                 </LogoDiv>
                 <InputDiv>
                     {/* Kakao 로그인 버튼 */}
-                    <KakaoButton onClick={handleKakaoLogin}>
+                    <KakaoButton onClick={KakaoLogin}>
                         <GoogleImg src="/img/Kakao.jpg" alt="logo" />
                         카카오로 시작하기
                     </KakaoButton>
                     {/* Google 로그인 버튼 */}
-                    <GoogleButton onClick={() => navigate('/signup')}>
+                    <GoogleButton onClick={GoogleLogin}>
                         <GoogleImg src="/img/GoogleLogo.png" alt="logo" />
                         구글로 시작하기
                     </GoogleButton>

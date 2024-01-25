@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Cookies from 'js-cookie';
 import { api } from '../axios/api';
 import ProfileValue from './ProfileValue';
+import ProfilePassword from './SettingPassword';
+import Subscribe from './Subscribe';
 
 // Profile 컴포넌트
 function Profile() {
-    const navigate = useNavigate();
+    const [subscribeToggle, setSubscribeToggle] = useState();
     // mypageData state 정의 및 초기값 설정
     const [profileData, setProfileData] = useState({
         // 사용자 정보의 초기값 설정
@@ -62,13 +64,16 @@ function Profile() {
     }, []);
     // JSX로 화면 구성
     return (
-        <StBody>
+        <Section>
+            <Header>
+                <h1 className="setting-head-title">프로필 설정</h1>
+                <p className="setting-head-description">
+                    {profileData.name} 뉴니커,
+                    <br />
+                    어떤 사람인지 더 알고 싶어요!
+                </p>
+            </Header>
             <ProfileDiv>
-                <ProfileHeadDiv>
-                    {/* 사용자에게 환영하는 메시지 */}
-                    <MypageH1 fw="400">{profileData.name} 뉴니커,</MypageH1>
-                    <MypageH1 fw="400">어떤 사람인지 더 알고 싶슴!</MypageH1>
-                </ProfileHeadDiv>
                 <>
                     {/* 뉴니커 정보 섹션 */}
                     <MypageH2>뉴니커 정보</MypageH2>
@@ -85,25 +90,39 @@ function Profile() {
                         <DivValue>{profileData.name}</DivValue>
                     </DivRow>
 
+                    <small style={{ display: 'block', margin: '2rem 0px 0.5rem' }}>
+                        데스크탑에서 이모지는{' '}
+                        <a href="https://emojipedia.org/unicode-8.0/" target="_blank" rel="noopener noreferrer">
+                            여기에서
+                        </a>{' '}
+                        복사 붙여넣기!
+                    </small>
 
+                    <DivRow style={{ cursor: 'pointer' }}>
+                        <h2 className="setting-row-label">이모지</h2>
+                        <DivValue>
+                            <div style={{ fontSize: '1.5rem' }}>🦔</div>
+                        </DivValue>
+                        <span className="setting-row-change">
+                            <i className="icon-arrow"></i>
+                        </span>
+                    </DivRow>
 
+                    <ProfileValue title="직업" />
+                    <ProfileValue title="관심분야" data={'고슴이는 밀웜에 관심있슴!'} />
 
+                    <MypageH2>비밀번호 변경</MypageH2>
+
+                    <ProfilePassword title={'비밀번호'} />
 
                     {/* 이메일 수신 정보 표시 */}
                     <MypageH2>이메일 수신여부</MypageH2>
-                    <InputDiv>
-                        <MypageH3 fw="500" ml="30px" mr="100px">
-                            이메일
-                        </MypageH3>
-                        <MypageH3 fw="500">{profileData.email}</MypageH3>
-                    </InputDiv>
-                    {/* 뉴스레터 수신 정보 표시 */}
-                    <InputDiv>
-                        <MypageH3 fw="500" ml="30px" mr="55px">
-                            시사 뉴스레터
-                        </MypageH3>
-                        <MypageH3 fw="500">스위치</MypageH3>
-                    </InputDiv>
+                    <DivRow style={{ cursor: 'default' }}>
+                        <h2 className="setting-row-label">이메일</h2>
+                        <DivValue>{profileData.email}</DivValue>
+                    </DivRow>
+
+                    <Subscribe isSubscribe={subscribeToggle} onChange={() => setSubscribeToggle((cur) => !cur)} />
                 </>
                 {/* 로그아웃 및 계정 삭제 링크 */}
                 <LogOuter>
@@ -113,33 +132,20 @@ function Profile() {
                     <StLink to={`/login`}>계정 삭제하기</StLink>
                 </LogOuter>
             </ProfileDiv>
-        </StBody>
+        </Section>
     );
 }
 
 export default Profile;
 
 // 스타일 컴포넌트
-/* ... (백그라운드 및 기본 스타일) */
-export const StBody = styled.div`
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-
-    display: flex;
-    flex-direction: column;
-    padding-top: 10px;
-    align-items: center;
-`;
 /* ... (프로필 영역 스타일) */
 export const ProfileDiv = styled.div`
-    margin-top: 40px;
-    width: 1360px;
+    width: 1340px;
     height: 1500px;
 `;
 /* ... (프로필 헤더 스타일) */
 export const ProfileHeadDiv = styled.div`
-    height: 70px;
     line-height: 0.7;
 `;
 /* ... (H1 태그 스타일) */
@@ -199,62 +205,6 @@ export const InputButtonDiv = styled.div`
     flex-direction: column;
     align-items: center;
 `;
-/* ... (버튼 영역 스타일) */
-export const ButtonDiv = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-`;
-/* ... (변경 버튼 스타일) */
-export const ChangeBtn = styled.button`
-    justify-content: center;
-    align-items: center;
-    width: 110px;
-    height: 50px;
-    padding: 10px;
-
-    background-color: black;
-
-    border-radius: 7px;
-
-    color: white;
-    font-size: 15px;
-    font-weight: 600;
-
-    margin-bottom: 10px;
-    margin-right: 10px;
-
-    &:hover {
-        color: black;
-        background-color: white;
-        cursor: pointer;
-    }
-`;
-/* ... (취소 버튼 스타일) */
-export const CancleBtn = styled.button`
-    justify-content: center;
-    align-items: center;
-    width: 110px;
-    height: 50px;
-    padding: 10px;
-
-    background-color: #eae7de;
-    border: none;
-    border-radius: 7px;
-
-    color: #605f5f;
-    font-size: 15px;
-    font-weight: 600;
-
-    margin-bottom: 10px;
-
-    &:hover {
-        color: #605f5f;
-        background-color: #eae7de;
-        border: 1px solid black;
-        cursor: pointer;
-    }
-`;
 /* ... (이모지 이미지 스타일) */
 export const EmojiImg = styled.div`
     margin-left: 20px;
@@ -279,8 +229,8 @@ export const StLink = styled(Link)`
     }
 `;
 // 추가 스타일
-const Section = styled.section`
-    max-width: 1360px;
+export const Section = styled.section`
+    max-width: 1300px;
     margin: 2rem auto 8rem;
     padding: 0 5%;
 
@@ -388,7 +338,7 @@ const Section = styled.section`
     }
 `;
 
-const DivRow = styled.div`
+export const DivRow = styled.div`
     margin: -1px calc(-2rem - 2px) 0;
     display: -webkit-flex;
     display: flex;
@@ -397,17 +347,27 @@ const DivRow = styled.div`
     box-sizing: border-box;
     overflow: hidden;
     border: 1px solid #051619;
-    border-top-color: rgb(5, 22, 25);
-    border-top-style: solid;
-    border-top-width: 1px;
     cursor: pointer;
     position: relative;
-
-    :first-of-type {
-        border-top: 1px solid #051619;
-    }
 `;
 
-const DivValue = styled.div`
+export const DivValue = styled.div`
     width: calc(100% - 7rem);
+`;
+const Header = styled.header`
+    margin: 4rem 0 2rem;
+
+    .setting-head-title {
+        font-size: 3rem;
+        font-weight: 300;
+        letter-spacing: -0.025rem;
+        text-indent: -1px;
+    }
+    .setting-head-description {
+        margin: 1rem 0 0;
+        font-size: 2.5rem;
+        font-weight: 300;
+        letter-spacing: -0.025rem;
+        line-height: 1.4;
+    }
 `;
