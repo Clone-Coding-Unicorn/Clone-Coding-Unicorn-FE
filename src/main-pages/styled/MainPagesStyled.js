@@ -7,7 +7,7 @@ export const GlobalStyles = createGlobalStyle`
     filter: invert(100%);
   } 
 body {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR","Apple SD Gothic Neo",sans-serif;
   background: #eae7de;
 }
 `
@@ -46,6 +46,7 @@ export const IntroHead = styled.header`
     position: relative;
     overflow: hidden;
     justify-content: flex-start;
+    border-bottom: 1px solid black;
 `
 export const BoxImg = styled.div`
     background: #ff6b00;
@@ -84,7 +85,6 @@ export const SubscribeGosum = styled.div`
 export const MainCategory = styled.nav`
     display: flex;
     justify-content: center;
-    border-top: 1px solid black;
     border-bottom: 1px solid black;
     background: rgb(255, 255, 255);
     box-sizing: border-box;
@@ -111,9 +111,13 @@ export const CategoryLink = styled.a`
     padding: 1.25rem 0px;
     box-sizing: border-box;
     font-size: 1.125rem;
-    color: rgb(5, 22, 25);
+    color: black;
     cursor: pointer;
     text-decoration-line: none;
+    color: ${(props) => (props.active ? '#ff6b00' : 'black')};
+    &:hover {
+        color: #ff6b00; 
+    }
 `
 // 카드 부분들
 export const HomeRecent = styled.section`
@@ -184,9 +188,27 @@ export const HomeRecent = styled.section`
   font-size: 1rem;
   color: #666;
 }
+`
+export const HomeRecentPagination = styled.div`
+    padding: 2rem 0;
+    button{
+        display: block;
+        margin: 0 auto;
+        width: 20rem;
+        background: #ff6b00;
+        padding: 10px 1.5rem 11px;
+        cursor: pointer;
+        border-radius: 8px;
+        border: 1px solid #051619;
+        background: #fff;
+        color: #051619;
+        font-weight: bold;
+        &:hover{
+            background-color: #ff6b00;
+            color: #fff;
+        }
+    }
 
-
- 
 `
 
 // 하단 카드 배너

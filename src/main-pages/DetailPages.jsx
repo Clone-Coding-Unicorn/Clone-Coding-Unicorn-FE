@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { PostBody, PostHead, PostSubmit, PostSubscribe, PostSubscribeGroup, PostTextfield } from './styled/DetailPages';
+import { PostBody, PostContainer, PostHead, PostHeadProgress, PostScrollWrap, PostSubmit, PostSubscribe, PostSubscribeGroup, PostTextfield } from './styled/DetailPages';
 import { api } from '../axios/api';
 import CustomLoading from './Loading';
-import { PostHead } from './styled/DetailPages';
 
 function DetailPages() {
     const { id } = useParams();
@@ -32,37 +31,65 @@ function DetailPages() {
             }
         };
         fetchData();
-        // window.addEventListener('scroll', handleScroll, { capture: true }); // 스크롤 이벤트 등록
-        // return () => {
-        //   window.removeEventListener('scroll', handleScroll); 		// 스크롤 이벤트 제거
-        // };
+
+        const handleScroll = () => {
+            // 현재 스크롤 위치
+            const scrollY = window.scrollY;
+
+            // 문서의 전체 높이
+            const documentHeight = document.documentElement.scrollHeight - 1600;
+
+            // 스크롤 위치를 퍼센티지로 계산
+            const percentage = (scrollY / documentHeight) * 100;
+
+            // state 업데이트
+            setScrollPosition(percentage);
+        };
+        window.addEventListener('scroll', handleScroll); // 스크롤 이벤트 등록
+        return () => {
+            window.removeEventListener('scroll', handleScroll); 		// 스크롤 이벤트 제거
+        };
+    }, []);
+
 
     if (loading) {
         return <CustomLoading />
     }
     return (
         <div>
+            <PostContainer>
+                <PostScrollWrap visible={scrollPosition > 5}><p>{posts && posts.title}</p>
+                    <PostHeadProgress style={{ width: `${scrollPosition}%` }}></PostHeadProgress>
+                </PostScrollWrap>
+            </PostContainer>
             <PostHead>
-                <p>{posts.category}</p>
-                <h1>{posts.title}</h1>
-                <p>{posts.date}</p>
+                {posts && (
+                    <>
+                        <p>{posts.category}</p>
+                        <h1>{posts.title}</h1>
+                        <p>{posts.date}</p>
+                    </>
+                )}
             </PostHead>
             <PostBody>
-                <img src={posts.imageUrl} alt="..." />
-                <div dangerouslySetInnerHTML={{ __html: posts.contents }} />
+                {posts && (
+                    <>
+                        <img src={posts.imageUrl} alt="..." />
+                        <div dangerouslySetInnerHTML={{ __html: posts.contents }} />
+                    </>
+                )}
+
             </PostBody>
             <PostSubscribe>
                 <PostSubscribeGroup>
                     <PostTextfield placeholder="이메일 주소">
-                        
+
                     </PostTextfield>
                     <PostSubmit>
                         뉴스레터 구독하기
                     </PostSubmit>
                 </PostSubscribeGroup>
             </PostSubscribe>
-
-
         </div>
     )
 }
