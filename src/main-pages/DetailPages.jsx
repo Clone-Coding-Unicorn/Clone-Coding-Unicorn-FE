@@ -8,12 +8,9 @@ function DetailPages() {
     const { id } = useParams();
     const [posts, setPosts] = useState(null);
     const [loading, setLoading] = useState(true);
-
     // 스크롤 이벤트를 하기위한 스크롤 수치
     const [scrollPosition, setScrollPosition] = useState(0);
-
     useEffect(() => {
-
         const fetchData = async () => {
             try {
                 if (!id) {
@@ -24,7 +21,7 @@ function DetailPages() {
                 console.log(response);
                 setPosts(response.data);
             } catch (error) {
-                console.error("에러 발생:", error);
+                console.error('에러 발생:', error);
             } finally {
                 // 로딩 상태 변경
                 setLoading(false);
@@ -50,10 +47,9 @@ function DetailPages() {
             window.removeEventListener('scroll', handleScroll); 		// 스크롤 이벤트 제거
         };
     }, []);
-
-
+  
     if (loading) {
-        return <CustomLoading />
+        return <CustomLoading />;
     }
     return (
         <div>
@@ -82,6 +78,7 @@ function DetailPages() {
             </PostBody>
             <PostSubscribe>
                 <PostSubscribeGroup>
+
                     <PostTextfield placeholder="이메일 주소">
 
                     </PostTextfield>
@@ -91,7 +88,6 @@ function DetailPages() {
                 </PostSubscribeGroup>
             </PostSubscribe>
         </div>
-    )
+    );
 }
-
-export default DetailPages
+export default DetailPages;
