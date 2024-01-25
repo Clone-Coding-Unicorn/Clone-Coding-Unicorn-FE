@@ -97,7 +97,8 @@ function MainPages() {
             ))}
           </div>
           <HomeRecentPagination>
-            <button onClick={handleLoadMore}>더보기</button>
+            {/* <button onClick={handleLoadMore}>더보기</button> */}
+            <button>더보기</button>
           </HomeRecentPagination>
         </HomeRecent>
       )}

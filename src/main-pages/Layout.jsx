@@ -2,11 +2,12 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import CustomNavbar from "./Navbar";
 import CustomFooter from "./Footer";
+
 const layoutStyles = {
   flexDirection: 'column',
   justifyContent: 'center',
   // alignItems: 'center',
-  minHeight: '90vh',
+  minHeight: '150vh',
 };
 
 

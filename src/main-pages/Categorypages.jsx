@@ -4,6 +4,7 @@ import { api } from '../axios/api';
 import CustomLoading from './Loading';
 import { CategoryLink, HomeRecent, MainCategory, MainCategoryInner } from './styled/MainPagesStyled';
 
+
 function Categorypages() {
     const { category } = useParams();
     const [posts, setPosts] = useState(null);
@@ -18,7 +19,7 @@ function Categorypages() {
 
                 const response = await api.get(`/api/posts/category?category=${category}`);
                 console.log(response);
-                setPosts(response.data);
+                setPosts(response.data[1]);
             } catch (error) {
                 console.error("에러 발생:", error);
             } finally {
@@ -49,21 +50,21 @@ function Categorypages() {
             {loading ? (
                 <CustomLoading />
             ) : (
-                <HomeRecent>
-                    {/* 카드부분 */}
-                    <div className="card-group" >
-                        {posts && posts.map((posts) => (
-                            <a className="card" href={`/${posts.id}`} key={posts.id}>
-                                <img src={posts.imageUrl} className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">{posts.title}</h5>
-                                    <p className="card-text">{posts.date}</p>
-                                    <p className="card-text"><small className="text-muted">{posts.category}</small></p>
-                                </div>
-                            </a>
-                        ))}
-                    </div>
-                </HomeRecent>
+                    <HomeRecent>
+                        {/* 카드부분 */}
+                        <div className="card-group" >
+                            {posts && posts.map((posts) => (
+                                <a className="card" href={`/${posts.id}`} key={posts.id}>
+                                    <img src={posts.imageUrl} className="card-img-top" alt="..." />
+                                    <div className="card-body">
+                                        <h5 className="card-title">{posts.title}</h5>
+                                        <p className="card-text">{posts.date}</p>
+                                        <p className="card-text"><small className="text-muted">{posts.category}</small></p>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+                    </HomeRecent>
             )}
         </>
     )

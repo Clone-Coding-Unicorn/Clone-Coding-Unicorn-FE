@@ -119,21 +119,17 @@ export const HomeRecent = styled.section`
 .card-group {
     display: flex;
     flex-wrap: wrap;
-    position: relative;
     border-color: #051619;
     border-style: solid;
     border-width: 1px 0 0 1px;
 }
 .card {
     box-sizing: border-box;
-    display: block;
     color: #051619;
     border: 1px solid #051619;
     border-width: 0 1px 1px 0;
     cursor: pointer;
     text-decoration-line: none;
-    background: #EAE7DE;
-    transition: background-color 0.3s ease;
     width: 25%;
         img {
             width: 100%;
@@ -160,7 +156,7 @@ export const HomeRecent = styled.section`
     }
 }
 .card-body {
-  padding: 10px;
+  padding: 13px;
 }
 .card-title {
   font-size: 1.25rem;
