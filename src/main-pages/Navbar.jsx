@@ -13,8 +13,8 @@ function CustomNavbar() {
   const [showDropdown, setShowDropdown] = useState(false);
   // 토큰 유무 확인
   const signOutButtonHandler = () => {
-    if (Cookies.get("token")) {
-      Cookies.remove("token");
+    if (Cookies.get("Authorization")) {
+      Cookies.remove("Authorization");
       navigate("/");
     } else {
       navigate("/login");
@@ -56,7 +56,7 @@ function CustomNavbar() {
               // 로그인&로그아웃 유무 확인
               <DropdownBox >
                 {
-                  Cookies.get("token") ? (
+                  Cookies.get("Authorization") ? (
                     <>
                       <a href="/mypage">마이페이지</a>
                       <a href="/profile">프로필</a>

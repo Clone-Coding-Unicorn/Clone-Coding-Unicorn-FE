@@ -32,7 +32,7 @@ function Searchpages() {
             <SearchContainer>
                 <SearchInputStyled
                     type="text"
-                    placeholder="검색어를 입력하세요"
+                    placeholder="고슴아 이게 궁금해"
                     value={searchTerm}
                     onChange={handleInputChange}
                 />
